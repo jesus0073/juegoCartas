@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: "letraclave";
+            src: url("./fuente/Retroville\ NC.ttf");
+        }
+
+        body,
+        html {
+            background-color: gray;
+            font-family: "letraClave";
+        }
+
+        #escenario {
+            width: 1219px;
+            height: 708px;
+            background-image: url("./escenario/campo2.png");
+            background-repeat: no-repeat;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+        }
+
+        #personaje {
+            width: 59px;
+            height: 128px;
+            position: absolute;
+            margin-top: 220px;
+            margin-left: 400px;
+        }
+
+        #p2 {
+            position: absolute;
+            margin-top: 250px;
+            margin-left: 800px;
+            width: 61px;
+            height: 87px;
+        }
+
+        #carta1 {
+
+            width: 149px;
+            height: 219px;
+            margin-left: 180px;
+            margin-top: 480px;
+            position: absolute;
+
+        }
+
+        #carta2 {
+
+            width: 149px;
+            height: 219px;
+            margin-left: 350px;
+            margin-top: 480px;
+            position: absolute;
+
+        }
+
+        #carta3 {
+
+            width: 149px;
+            height: 219px;
+            margin-left: 520px;
+            margin-top: 480px;
+            position: absolute;
+
+        }
+
+        #carta4 {
+
+            width: 149px;
+            height: 219px;
+            margin-left: 690px;
+            margin-top: 480px;
+            position: absolute;
+
+        }
+
+        #carta5 {
+
+            width: 149px;
+            height: 219px;
+            margin-left: 860px;
+            margin-top: 480px;
+            position: absolute;
+            z-index: 1;
+
+        }
+
+        .cartas:hover {
+            position: absolute;
+            margin-top: -60px;
+            margin-left: -50px;
+            width: 150%;
+            height: 150%;
+            z-index: 2;
+
+        }
+
+        button {
+            border: none;
+            background: none;
+        }
+
+        #letras {
+            position: absolute;
+            width: 10px;
+            margin-top: 216px;
+            margin-left: 859px;
+            color: red;
+            font-size: 20px;
+        }
+
+        #vidaMalo {
+            position: absolute;
+            margin-left: 770px;
+            margin-top: 220px;
+        }
+
+        #laVida {
+            width: 110px;
+        }
+
+        #contenedorD {
+            border-radius: 10px 10px 10px 10px;
+            position: absolute;
+            font-size: 9px;
+            width: 150px;
+            height: 200px;
+            margin-left: 100px;
+            margin-top: 100px;
+            background-color: darkgray;
+            text-align: center;
+        }
+
+        #dialogos {
+            position: absolute;
+            width: 200px;
+
+            margin-left: 500px;
+            margin-top: 100px;
+            font-size: 18;
+        }
+
+        #datosCombate {
+            background-color: rgb(0, 0, 0);
+            color: white;
+        }
+
+        #inicio {
+            position: absolute;
+            color: white;
+            font-size: 40px;
+            margin-left: 490px;
+            margin-top: 40px;
+        }
+        #mazo{
+            position: absolute;
+            width: 149px;
+            height: 219px;
+            margin-top: 470px;
+            margin-left: 1050px;
+        }
+        #curacion{
+            color: greenyellow;
+            position: absolute;
+            margin-top: 180px;
+            margin-left: 410px;
+            font-size: 22px;
+        }
+        #barra{
+            width: 100%;
+            height: 40px;
+            background-color: black;
+            color: white;
+        }
+        #corazon{
+            margin-left: 50px;
+            margin-top: 3px;
+            width: 45px;
+        }
+        #mivida{
+            position: absolute;
+            margin-left: 100px;
+            margin-top: -36px;
+           
+        }
+        #moneda{
+            position: absolute;
+            width: 110px;
+            margin-top: -45px;
+            margin-left: 420px;
+        }
+        #monedas{
+            position: absolute;
+            color:  yellow;
+            margin-top: -35px;
+            margin-left: 600px;  
+
+        }
+        #minimazo{
+            position: absolute;
+            width: 24px;
+            margin-top: 2px;
+            margin-left: 860px;
+        }
+        #nmazo{
+            position: absolute;
+            margin-top: -35px;
+            margin-left: 1000px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <audio src="./Spring Village.mp3" autoplay loop></audio>
+    <div id="contenedorD">
+        <h1 id="descripcion">Pasa el cursor por una carta para saber la información</h1>
+    </div>
+    <div id="escenario">
+        <div id="inicio">STAGE 1</div>
+        <div id="personaje">
+            <img id="heroe" src="./personajes/p1peque.png" alt="">
+        </div>
+        <div id="p2">
+            <img id="malo" src="./personajes/palo1.png" alt="">
+        </div>
+        <div id="letras">
+            <h3 id="texto"></h3>
+        </div>
+        <div id="vidaMalo">
+            <img id="laVida" src="./cartas/100.png" alt="">
+        </div>
+        <div id="dialogos">
+            <h3 id="datosCombate"></h3>
+        </div>
+        <div id="carta1">
+            <button onclick="valorCarta(value);" value="0"><img class="cartas" src="" alt=""></button>
+        </div>
+        <div id="carta2">
+            <button onclick="valorCarta(value);" value="1"><img class="cartas" src="" alt=""></button>
+        </div>
+        <div id="carta3">
+            <button onclick="valorCarta(value);" value="2"><img class="cartas" src="" alt=""></button>
+        </div>
+        <div id="carta4">
+            <button onclick="valorCarta(value);" value="3"><img class="cartas" src="" alt=""></button>
+        </div>
+        <div id="carta5">
+            <button onclick="valorCarta(value);" value="4"><img class="cartas" src="" alt=""></button>
+        </div>
+        <div id="mazo">
+            <img src="./escenario/dorsopque.png" alt="">
+        </div>
+        <div id="curacion">
+            
+        </div>
+        <div id="barra">
+            <img id="corazon" src="./escenario/corazonpeque.png" alt="">
+            <h2 id="mivida">100/100</h2>
+            <img id="moneda" src="./escenario/moneda.png" alt="">
+            <h2 id="monedas">0</h2>
+            <img id="minimazo" src="./escenario/dorsopque.png" alt="">
+            <h2 id="nmazo">35/40</h2>
+        </div>
+    </div>
+    <script>
+        //Cartas
+        var cartaGolpe = new Object();
+        cartaGolpe.valor = "Ataque";
+        cartaGolpe.power = "10";
+        cartaGolpe.src = "./cartas/dfisico2.png";
+        cartaGolpe.descripcion = "Golpe físico que daña al enemigo 10 puntos de salud";
+        var cartaHielo = new Object();
+        cartaHielo.valor = "Magia";
+        cartaHielo.power = "40";
+        cartaHielo.src = "./cartas/dmagico1.png";
+        cartaHielo.descripcion = "Golpe mágico que daña al enemigo 40 puntos de salud";
+        var cartaEscudo = new Object();
+        cartaEscudo.valor = "Defensa";
+        cartaEscudo.power = "nada";
+        cartaEscudo.heal = "20";
+        cartaEscudo.src = "./cartas/escudo1.png";
+        cartaEscudo.descripcion = "Escudo de 20 puntos de salud y vuelve a tener turno";
+
+        var cartaBloqueoTurno = new Object();
+        cartaBloqueoTurno.src = "./cartas/dorsoP.png";
+
+
+        var cartasPosibles = [cartaGolpe, cartaHielo, cartaEscudo];
+        //variables
+        vidaMalo = 100;
+        vidaP1 = 100;
+
+
+        //Mazo
+        var mazo = [];
+
+        function rellenarMazo() {
+            for (var i = 0; i < 40; i++) {
+                var n = Math.round(Math.random() * 100);
+                if (n < 75) mazo.push(cartasPosibles[0]);
+                else if (n >= 75 && n < 95) mazo.push(cartasPosibles[1]);
+                else mazo.push(cartasPosibles[2]);
+            }
+
+        }
+        console.log(mazo);
+
+
+        var miMano = [];
+
+        function robaCinco() {
+            var long = 0;
+            for (var i = 0; i < 5; i++) {
+                long = mazo.length - 1;
+                var n = Math.round(Math.random() * long);
+                var mismo = mazo.splice(n, 1);
+                miMano.push(mismo[0]);
+
+            }
+            console.log(miMano);
+        }
+
+        var contador = 0;
+
+        function movimientomalo() {
+            var palo = ["./personajes/palo2.png", "./personajes/palo1.png"];
+            var heroe = ["./personajes/p1peque.png", "./personajes/p2peque.png"];
+            document.getElementById("malo").src = palo[contador];
+            document.getElementById("heroe").src = heroe[contador];
+            contador++;
+            if (contador == 2) contador = 0;
+
+        }
+        var pepe = 0;
+
+        function escogerCartas() {
+            for (var i = 0; i < 5; i++) {
+                var cartas = document.getElementsByClassName("cartas")[i];
+                cartas.src = miMano[i].src;
+            }
+        }
+
+        function bloquearMano() {
+            for (var i = 0; i < 5; i++) {
+
+                var cartas = document.getElementsByClassName("cartas")[i];
+                cartas.src = "./cartas/dorsoP.png";
+            }
+        }
+
+        function mismo() {
+
+
+            document.getElementsByClassName("cartas")[0].addEventListener("mouseover", function () {
+                document.getElementById("descripcion").innerText = miMano[0].descripcion;
+            });
+            document.getElementsByClassName("cartas")[1].addEventListener("mouseover", function () {
+                document.getElementById("descripcion").innerText = miMano[1].descripcion;
+            });
+            document.getElementsByClassName("cartas")[2].addEventListener("mouseover", function () {
+                document.getElementById("descripcion").innerText = miMano[2].descripcion;
+            });
+            document.getElementsByClassName("cartas")[3].addEventListener("mouseover", function () {
+                document.getElementById("descripcion").innerText = miMano[3].descripcion;
+            });
+            document.getElementsByClassName("cartas")[4].addEventListener("mouseover", function () {
+                document.getElementById("descripcion").innerText = miMano[4].descripcion;
+            });
+
+            document.getElementsByClassName("cartas")[0].addEventListener("mouseout", function () {
+                document.getElementById("descripcion").innerText = "";
+            });
+            document.getElementsByClassName("cartas")[1].addEventListener("mouseout", function () {
+                document.getElementById("descripcion").innerText = "";
+            });
+            document.getElementsByClassName("cartas")[2].addEventListener("mouseout", function () {
+                document.getElementById("descripcion").innerText = "";
+            });
+            document.getElementsByClassName("cartas")[3].addEventListener("mouseout", function () {
+                document.getElementById("descripcion").innerText = "";
+            });
+            document.getElementsByClassName("cartas")[4].addEventListener("mouseout", function () {
+                document.getElementById("descripcion").innerText = "";
+            });
+
+        }
+
+
+
+
+        function robaUna(value) {
+
+            miMano.splice(value, 1);
+            long = mazo.length - 1;
+            if (long == 1) {
+                console.log("Ultima carta");
+            } else {
+                var n = Math.round(Math.random() * long);
+                var mismo = mazo.splice(n, 1);
+                miMano.push(mismo[0]);
+
+                console.log(mazo);
+            }
+            console.log(miMano);
+
+
+
+        }
+
+        function borraLetra() {
+            document.getElementById("texto").innerText = "";
+        }
+
+        function valorCarta(value) {
+
+            bloquearMano();
+            if ( miMano[value].power == "nada") {
+                curacion = miMano[value].heal;
+                document.getElementById("curacion").innerText = "+" + curacion;
+                var v1=parseInt(curacion);
+                var v2= parseInt(vidaP1);
+                vidaP1= v1 + v2;
+                console.log(vidaP1);
+                miMano.pop[value];
+                robaUna(value);
+                document.getElementById("mivida").innerHTML= vidaP1+" /100";
+                document.getElementById("nmazo").innerText = mazo.length+"/40";
+                
+                setTimeout(function () {
+                    document.getElementById("curacion").innerText = "";
+                    escogerCartas();
+                }, 3000);
+            } else {
+                console.log(typeof miMano[value].power);
+                damage = miMano[value].power;
+                document.getElementById("texto").innerText = "-" + damage;
+                actualizarVida(damage);
+                miMano.pop[value];
+                robaUna(value);
+                document.getElementById("nmazo").innerText = mazo.length+"/40";
+                setTimeout(function () {
+                    borraLetra();
+
+                }, 800);
+            }
+
+
+
+        }
+
+        function actualizarVida(value) {
+
+
+            vidaMalo = vidaMalo - value;
+            console.log(vidaMalo);
+            if (vidaMalo > 0) {
+                setTimeout(function () {
+                    vidaP1 = vidaP1 - 20;
+                    document.getElementById("datosCombate").innerText =
+                        "Candelus te ha asertado una llamarada infernal...";
+                    document.getElementById("mivida").innerHTML= vidaP1+" /100";
+                    if (vidaP1 <= 0) {
+                        window.location = "gameOver.html";
+                    }
+                }, 1000);
+
+                setTimeout(function () {
+                    document.getElementById("datosCombate").innerText = "";
+                    escogerCartas();
+                }, 3000);
+            } else {
+                clearInterval(movimientoenemigo);
+                var micontador = 0
+                var humos = ["./personajes/humo1.png", "./personajes/humo2.png", "./personajes/humo1.png",
+                    "./personajes/humo2.png", "./personajes/humo3.png",
+                    "./personajes/humo4.png", "./personajes/nada"
+                ];
+
+                var muerteEnemigo = setInterval(function () {
+                    document.getElementById("malo").src = humos[micontador];
+                    micontador++;
+                    if (micontador == 7) {
+                        clearInterval(muerteEnemigo);
+                    }
+                }, 200);
+
+                setTimeout(function () {
+                    document.getElementById("inicio").innerText = "VICTORY"
+
+                }, 1700);
+                setTimeout(function () {
+                    window.location = "batalla2.html";
+
+                }, 5000);
+
+            }
+
+            switch (vidaMalo) {
+                case 90:
+                    document.getElementById("laVida").src = "./cartas/90.png";
+                    break;
+                case 80:
+                    document.getElementById("laVida").src = "./cartas/80.png";
+                    break;
+                case 70:
+                    document.getElementById("laVida").src = "./cartas/70.png";
+                    break;
+                case 60:
+                    document.getElementById("laVida").src = "./cartas/60.png";
+                    break;
+                case 50:
+                    document.getElementById("laVida").src = "./cartas/50.png";
+                    break;
+                case 40:
+                    document.getElementById("laVida").src = "./cartas/40.png";
+                    break;
+                case 30:
+                    document.getElementById("laVida").src = "./cartas/30.png";
+                    break;
+                case 20:
+                    document.getElementById("laVida").src = "./cartas/20.png";
+                    break;
+                case 10:
+                    document.getElementById("laVida").src = "./cartas/10.png";
+                    break;
+                default:
+                    document.getElementById("laVida").src = "./personajes/nada ";
+                    break;
+            }
+        }
+
+
+
+
+        //llamadas a las funciones
+        rellenarMazo();
+        robaCinco();
+        escogerCartas();
+        var movimientoenemigo = setInterval(function () {
+            movimientomalo()
+        }, 400);
+        setTimeout(function () {
+            document.getElementById("inicio").innerText = ""
+        }, 2000)
+        mismo();
+    </script>
+</body>
+
+
+</html>
