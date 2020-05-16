@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANDCARD</title>
+</head>
+<style>
+    @font-face {
+        font-family: "letraclave";
+        src: url("./fuente/Retroville\ NC.ttf");
+    }
+
+    body,
+    html {
+        background-color: black;
+        color: white;
+        font-family: "letraClave";
+    }
+
+    #letras {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+        font-size: 22px;
+        width: 1000px;
+
+    }
+
+    #start {
+        text-align: center;
+        font-size: 21px;
+    }
+</style>
+<script>
+    var contador = 0;
+    var miTexto =
+        "Hace mucho tiempo, en la edad media había un reino llamado LANDCARD. En este reino no importaba el estatus social o los ropajes sino las luchas de cartas. Los grandes estrategas eran REYES y los malos pobres esbirros. Adéntrate en este salvaje reino de combates para saber si eres digno de la corona.";
+    var intervalo = setInterval(() => {
+        document.getElementById("primero").innerHTML += miTexto[contador];
+
+        contador++;
+        if (contador == miTexto.length) {
+            clearInterval(intervalo);
+            document.getElementById("start").innerHTML = "Pulsa cualquier tecla para comenzar tu aventura";
+            window.addEventListener("keydown", function (event) {
+                window.location="batalla.html";
+            }, false);
+        }
+    }, 100);
+</script>
+
+<body>
+    <audio src="./Lyonesse.mp3" autoplay loop></audio>
+    <div id="letras">
+        <h1 id="primero"></h1>
+        <br>
+        <h1 id="start"></h1>
+    </div>
+
+</body>
+
+</html>
