@@ -16,16 +16,36 @@
             color: white;
             background-color: black;
             font-family: "letraClave";
-            align-items: center;
-            display: flex;
-            justify-content: center;
             height: 100%;
         }
+        
+        #contenedor {
+            height: 200px;
+            width: 400px;
+            margin: 400px auto;
+
+        }
+        #contenido {
+            text-align: center;
+        }
+        button{
+            background-color: black;
+            color: white;
+            font-family: "letraClave";
+            border: none;
+        }
+        
     </style>
+    
 </head>
 
-<body>
-    <h1>Game Over</h1>
+<body style="overflow:hidden">
+    <div id="contenedor">
+        <div id="contenido">
+            <h1>Game Over</h1>
+            <button onclick="document.location='batalla.html'">Volver a intentarlo</button>
+        </div>
+    </div>
 </body>
 
 </html>
