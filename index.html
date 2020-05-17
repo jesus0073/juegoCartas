@@ -50,19 +50,30 @@
 <script>
     var contador = 0;
     var miTexto =
-        "Hace mucho tiempo, en la Edad Media había un reino llamado LANDCARD. En este reino no importaba el estatus social o los ropajes sino las luchas de cartas. Los grandes estrategas eran REYES y los malos pobres esbirros. Adéntrate en este salvaje reino de combates para saber si eres digno de la corona.";
+        "Hace mucho tiempo, en la Edad Media, había un reino llamado LANDCARD. En este reino no importaba el estatus social o los ropajes sino las luchas de cartas. Los grandes estrategas eran REYES y los malos pobres esbirros. Adéntrate en este salvaje reino de combates para saber si eres digno de la corona.";
     var intervalo = setInterval(() => {
         document.getElementById("primero").innerHTML += miTexto[contador];
 
         contador++;
-        if (contador == miTexto.length) {
+        window.addEventListener("keydown", function (event) {
             clearInterval(intervalo);
+            document.getElementById("primero").innerHTML =miTexto;
             document.getElementById("start").innerHTML = "Pulsa cualquier tecla para comenzar tu aventura";
             window.addEventListener("keydown", function (event) {
-                window.location="batalla.html";
+                window.location="tutorial.html";
             }, false);
             window.addEventListener("click", function (event) {
-                window.location="batalla.html";
+                window.location="tutorial.html";
+            }, false);
+        }, false);
+        if (contador == miTexto.length) {
+            
+            document.getElementById("start").innerHTML = "Pulsa cualquier tecla para comenzar tu aventura";
+            window.addEventListener("keydown", function (event) {
+                window.location="tutorial.html";
+            }, false);
+            window.addEventListener("click", function (event) {
+                window.location="tutorial.html";
             }, false);
         }
     }, 100);

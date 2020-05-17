@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANDCARD</title>
+    <style>
+        @font-face {
+            font-family: "letraclave";
+            src: url("./fuente/Retroville\ NC.ttf");
+        }
+
+        body,
+        html {
+            background-color: black;
+            font-family: "letraClave";
+            color: white;
+        }
+        #contenedor{
+            text-align: center;
+        }
+        img{
+            width: 1000px;
+        }
+    </style>
+    <script>
+        var contador = 0;
+        var misImagenes=["./escenario/tuto2.png","./escenario/tuto3.png","./escenario/tuto4.png"];
+        window.addEventListener("click", function (event) {
+            document.getElementById("imagen").src=misImagenes[contador];
+            contador++;
+            if(contador==4) window.location="batalla.html";
+            
+
+        }, false);
+        window.addEventListener("keydown",function(event){
+
+            if(event.keyCode == 32) cambiar();
+        },false);
+        function cambiar(){
+            window.location="batalla.html";
+        }
+
+    </script>
+</head>
+<body>
+    <div id="contenedor">
+        <h2>Haz click para avanzar o pulsa la barra espaciadora para saltar tutorial</h2>
+        <img id="imagen" src="./escenario/tuto1.png" alt="">
+        
+    </div>
+</body>
+</html>
