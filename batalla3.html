@@ -20,7 +20,7 @@
         #escenario {
             width: 1219px;
             height: 708px;
-            background-image: url("./escenario/campo3.png");
+            background-image: url("./escenario/campo4.png");
             background-repeat: no-repeat;
             margin-left: auto;
             margin-right: auto;
@@ -37,8 +37,8 @@
 
         #p2 {
             position: absolute;
-            margin-top: 250px;
-            margin-left: 800px;
+            margin-top: 237px;
+            margin-left: 759px;
             width: 61px;
             height: 87px;
         }
@@ -121,7 +121,7 @@
         #vidaMalo {
             position: absolute;
             margin-left: 770px;
-            margin-top: 220px;
+            margin-top: 210px;
         }
 
         #laVida {
@@ -218,6 +218,9 @@
             margin-top: -35px;
             margin-left: 1000px;
         }
+        #malo{
+            width: 100px;
+        }
     </style>
 
 </head>
@@ -228,12 +231,12 @@
         <h1 id="descripcion">Pasa el cursor por una carta para saber la información</h1>
     </div>
     <div id="escenario">
-        <div id="inicio">STAGE 2</div>
+        <div id="inicio">STAGE 3</div>
         <div id="personaje">
             <img id="heroe" src="./personajes/p1peque.png" alt="">
         </div>
         <div id="p2">
-            <img id="malo" src="./personajes/maguito1.png" alt="">
+            <img id="malo" src="./personajes/rey.png" alt="">
         </div>
         <div id="letras">
             <h3 id="texto"></h3>
@@ -269,7 +272,7 @@
             <img id="corazon" src="./escenario/corazonpeque.png" alt="">
             <h2 id="mivida">100/100</h2>
             <img id="moneda" src="./escenario/moneda.png" alt="">
-            <h2 id="monedas">200</h2>
+            <h2 id="monedas">400</h2>
             <img id="minimazo" src="./escenario/dorsopque.png" alt="">
             <h2 id="nmazo">35/40</h2>
         </div>
@@ -333,17 +336,19 @@
         }
 
         var contador = 0;
-
+        var contadorRey=0;
         function movimientomalo() {
-            var palo = ["./personajes/maguito2.png", "./personajes/maguito1.png"];
+            var palo = ["./personajes/rey2.png", "./personajes/rey3.png", "./personajes/rey.png"];
             var heroe = ["./personajes/p1peque.png", "./personajes/p2peque.png"];
-            document.getElementById("malo").src = palo[contador];
+            document.getElementById("malo").src = palo[contadorRey];
             document.getElementById("heroe").src = heroe[contador];
             contador++;
+            contadorRey++;
             if (contador == 2) contador = 0;
+            if (contadorRey == 3) contadorRey = 0;
 
         }
-        var pepe = 0;
+        
 
         function escogerCartas() {
             for (var i = 0; i < 5; i++) {
@@ -469,16 +474,16 @@
                 setTimeout(function () {
                     var n = Math.round(Math.random() * 100);
                     if(n < 80){
-                        vidaP1 = vidaP1 - 20;
-                        document.getElementById("mivida").innerHTML= vidaP1+" /100";
-                        document.getElementById("datosCombate").innerText =
-                        "Rabadón el mago usó magia oscura tu vida se ha reducido";
-                    } 
-                    else {
                         vidaP1 = vidaP1 - 25;
                         document.getElementById("mivida").innerHTML= vidaP1+" /100";
                         document.getElementById("datosCombate").innerText =
-                        "Rabadón el mago usó magia más poderosa te ha herido gravemente";
+                        "El Rey usó su cetro de poder y tu vida se ha reducido";
+                    } 
+                    else {
+                        vidaP1 = vidaP1 - 30;
+                        document.getElementById("mivida").innerHTML= vidaP1+" /100";
+                        document.getElementById("datosCombate").innerText =
+                        "El poder el Rey es más poderoso que antes te ha herido gravemente";
                     }
                     
                     if (vidaP1 <= 0) {
@@ -510,7 +515,7 @@
                     document.getElementById("inicio").innerText = "VICTORY"
                 }, 1700);
                 setTimeout(function(){
-                    window.location="batalla3.html";
+                    window.location="victoria.html";
                 },4000);
 
             }

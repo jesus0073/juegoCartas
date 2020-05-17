@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LANDCARD</title>
     <style>
         @font-face {
             font-family: "letraclave";
@@ -132,8 +132,8 @@
             border-radius: 10px 10px 10px 10px;
             position: absolute;
             font-size: 9px;
-            width: 150px;
-            height: 200px;
+            width: 170px;
+            height: 155px;
             margin-left: 100px;
             margin-top: 100px;
             background-color: darkgray;
@@ -222,7 +222,7 @@
 </head>
 
 <body>
-    <audio src="./Spring Village.mp3" autoplay loop></audio>
+    <audio id="sonido" src="./Spring Village.mp3" autoplay loop></audio>
     <div id="contenedorD">
         <h1 id="descripcion">Pasa el cursor por una carta para saber la información</h1>
     </div>
@@ -308,8 +308,8 @@
         function rellenarMazo() {
             for (var i = 0; i < 40; i++) {
                 var n = Math.round(Math.random() * 100);
-                if (n < 75) mazo.push(cartasPosibles[0]);
-                else if (n >= 75 && n < 95) mazo.push(cartasPosibles[1]);
+                if (n < 60) mazo.push(cartasPosibles[0]);
+                else if (n >= 60 && n < 90) mazo.push(cartasPosibles[1]);
                 else mazo.push(cartasPosibles[2]);
             }
 
@@ -554,6 +554,9 @@
             document.getElementById("inicio").innerText = ""
         }, 2000)
         mismo();
+
+        var son = document.getElementById("sonido");
+        son.volume = 0.15;
     </script>
 </body>
 

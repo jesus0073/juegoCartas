@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANDCARD</title>
+</head>
+<style>
+    @font-face {
+        font-family: "letraclave";
+        src: url("./fuente/Retroville\ NC.ttf");
+    }
+
+    body,
+    html {
+        background-color: black;
+        color: white;
+        font-family: "letraClave";
+    }
+    div{
+        width: 1000px;
+        position: relative;
+        text-align: center;
+        margin-left: auto;
+        margin-top: 50px;
+        margin-right: auto;
+
+    }
+    
+</style>
+
+<body>
+    <div>
+        <audio id="sonido" autoplay loop src="./I-Miss-You.mp3"></audio>
+        <h1>FELICIDADES TE HAS ALZADO CON LA CORONA DEL REINO</h1>
+        <img src="./personajes/victoria.png" alt="">
+    </div>
+</body>
+<script>
+    var son = document.getElementById("sonido");
+    son.volume = 0.2;
+</script>
+</html>

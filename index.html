@@ -34,10 +34,23 @@
         font-size: 21px;
     }
 </style>
+
+
+<body>
+    <audio id="sonido" src="./Lyonesse.mp3" autoplay loop></audio>
+    <div id="letras">
+        <h1 id="primero"></h1>
+        <br>
+        <h1 id="start"></h1>
+    </div>
+
+</body>
+
+</html>
 <script>
     var contador = 0;
     var miTexto =
-        "Hace mucho tiempo, en la edad media había un reino llamado LANDCARD. En este reino no importaba el estatus social o los ropajes sino las luchas de cartas. Los grandes estrategas eran REYES y los malos pobres esbirros. Adéntrate en este salvaje reino de combates para saber si eres digno de la corona.";
+        "Hace mucho tiempo, en la Edad Media había un reino llamado LANDCARD. En este reino no importaba el estatus social o los ropajes sino las luchas de cartas. Los grandes estrategas eran REYES y los malos pobres esbirros. Adéntrate en este salvaje reino de combates para saber si eres digno de la corona.";
     var intervalo = setInterval(() => {
         document.getElementById("primero").innerHTML += miTexto[contador];
 
@@ -50,16 +63,6 @@
             }, false);
         }
     }, 100);
+    var son = document.getElementById("sonido");
+    son.volume = 0.12;
 </script>
-
-<body>
-    <audio src="./Lyonesse.mp3" autoplay loop></audio>
-    <div id="letras">
-        <h1 id="primero"></h1>
-        <br>
-        <h1 id="start"></h1>
-    </div>
-
-</body>
-
-</html>
