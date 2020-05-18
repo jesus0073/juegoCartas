@@ -67,7 +67,7 @@
             }, false);
         }, false);
         if (contador == miTexto.length) {
-            
+            clearInterval(intervalo);
             document.getElementById("start").innerHTML = "Pulsa cualquier tecla para comenzar tu aventura";
             window.addEventListener("keydown", function (event) {
                 window.location="tutorial.html";
